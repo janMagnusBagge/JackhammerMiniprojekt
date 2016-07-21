@@ -12,6 +12,6 @@ namespace JackhammerMiniprojekt.Models
 		public int ID { get; set; }
 		public string QuestionString { get; set; }
 		public string Answer { get; set; }
-		public int Category { get; set; }
+		public int Category { get; set; } //test
 	}
 }
