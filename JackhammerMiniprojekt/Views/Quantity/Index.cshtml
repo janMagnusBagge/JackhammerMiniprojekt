@@ -1,0 +1,52 @@
+﻿@model JackhammerMiniprojekt.ViewModels.WordsQuestionViewModel
+
+<div>
+	@if (Model.ShowResult)
+	{
+		<p>You got @Model.Points points</p>
+		if(Model.Words.Count == 0 && Model.Answer.Length==0)
+		{
+			<p>Congratulations! You used every word and nothing else!</p>
+		}
+		if (Model.Words.Count > 1)
+		{
+			<p>You did not use these words</p>
+			foreach (string word in Model.Words)
+			{
+				@word <br />
+			}
+		}
+		else if (Model.Words.Count == 1)
+		{
+			<p>You did not use this word</p>
+			foreach (string word in Model.Words)
+			{
+				@word <br />
+			}
+		}
+		if (Model.Answer.Length > 0)
+		{
+			<br />
+			<p>These are either misspelled or were not supposed to be used</p>
+			<p>@Model.Answer</p> <br />
+		}
+	}
+	else
+	{
+		foreach (var word in Model.Words)
+		{
+			@word <br />
+		}
+		using (Html.BeginForm("Index", "Quantity", FormMethod.Post))
+		{
+			@Html.TextBox("model.Answer", "TEST")
+			@Html.Hidden("model.Points")
+			foreach (string word in Model.Words)
+			{
+				@Html.Hidden("model.Words[]", word)
+			}
+			
+			<button type="submit">Check</button>
+		}
+	}
+</div>

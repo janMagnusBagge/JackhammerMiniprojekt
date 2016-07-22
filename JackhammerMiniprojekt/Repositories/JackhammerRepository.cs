@@ -10,7 +10,7 @@ using System.Web;
 namespace JackhammerMiniprojekt.Repositories
 {
 
-	public class JackhammerRepository 
+	public class JackhammerRepository
 	{
 		JackhammerContext _dbContext;
 		public JackhammerRepository()
@@ -29,7 +29,7 @@ namespace JackhammerMiniprojekt.Repositories
 
 		public Question GetQuestion(int category)
 		{
-			var Questions =  _dbContext.Questions.Where(q => q.Category == category).ToList();
+			var Questions = _dbContext.Questions.Where(q => q.Category == category).ToList();
 			if (Questions.Count == 0)
 				return null;
 
@@ -49,6 +49,40 @@ namespace JackhammerMiniprojekt.Repositories
 			resultQuestion.SetAnswerAlternatives();
 
 			return resultQuestion;
+		}
+
+		public WordsQuestionViewModel GetWordQuestion()
+		{
+			Question question = GetQuestion(2);
+			WordsQuestionViewModel result = new WordsQuestionViewModel();
+			result.Words = question.QuestionString.Split(',').ToList();
+
+			return result;
+		}
+
+		public WordsQuestionViewModel CheckWordsAnswer(WordsQuestionViewModel answer)
+		{
+			int points = 0;
+			List<string> answers = answer.Answer.ToLower().Split(' ').ToList();
+			List<string> missingWords = new List<string>();
+			foreach (string word in answer.Words)
+			{
+				if (answers.Contains(word.ToLower()))
+				{
+					answers.Remove(word);
+					points++;
+				}
+				else
+				{
+					missingWords.Add(word);
+				}
+			}
+			string invalidWords = "";
+			foreach (string word in answers)
+			{
+				invalidWords += word;
+			}
+			return new WordsQuestionViewModel { Words = missingWords, Answer = invalidWords, Points = points, ShowResult = true };
 		}
 	}
 }
