@@ -1,0 +1,99 @@
+﻿@model JackhammerMiniprojekt.ViewModels.ColorQuestionViewModel
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		var isDone = false;
+		var canvas = document.getElementById('colorCanvas');
+		var canvasContext = canvas.getContext('2d');
+		var question = @Html.Raw(Json.Encode(Model.Question));
+		canvasContext.fillStyle = @Html.Raw(Json.Encode(Model.AnswerAlternatives[0].Name));
+		canvasContext.fillRect(0, 0, 100, 100);
+		canvasContext.fillStyle = @Html.Raw(Json.Encode(Model.AnswerAlternatives[1].Name));
+		canvasContext.fillRect(150, 0, 100, 100);
+		canvasContext.fillStyle = @Html.Raw(Json.Encode(Model.AnswerAlternatives[2].Name));
+		canvasContext.fillRect(0, 150, 100, 100);
+		canvasContext.fillStyle = @Html.Raw(Json.Encode(Model.AnswerAlternatives[3].Name));
+		canvasContext.fillRect(150, 150, 100, 100);
+		function writeMessage(canvas, message) {
+			var context = canvas.getContext('2d');
+			context.clearRect(75, 100, 175, 50);
+			context.font = '18pt Calibri';
+			context.fillStyle = 'black';
+			context.fillText(message, 75, 125);
+		}
+		function getMousePos(canvas, evt) {
+			var rect = canvas.getBoundingClientRect();
+			return {
+				x: evt.clientX - rect.left,
+				y: evt.clientY - rect.top
+			};
+		}
+		function getAnswerID(x, y) {
+			var id = 0;
+			if(x>=0 && x<= 100)
+			{
+				if (y >= 0 && y <= 100) {
+					id = 1;
+				}
+				else if (y >= 150 && y <= 250) {
+					id = 3;
+				}
+			}
+			else if(x>=150 && x<= 250)
+			{
+				if (y >= 0 && y <= 100) {
+					id = 2;
+				}
+				else if (y >= 150 && y <= 250) {
+					id = 4;
+				}
+			}
+			if (id >= 1)
+			{
+				return checkAnswer(id);
+			}
+		}
+		function checkAnswer(id){
+			var answer = "";
+			if(id === 1)
+				answer = @Html.Raw(Json.Encode(Model.AnswerAlternatives[0].Name));
+			else if(id === 2)
+				answer = @Html.Raw(Json.Encode(Model.AnswerAlternatives[1].Name));
+			else if(id === 3)
+				answer = @Html.Raw(Json.Encode(Model.AnswerAlternatives[2].Name));
+			else if(id === 4)
+				answer = @Html.Raw(Json.Encode(Model.AnswerAlternatives[3].Name));
+			isDone = true;
+			next.hidden = false;
+			back.hidden = false;
+			if(question === answer)
+			{
+				writeMessage(canvas, "Correct");
+				return true;
+			}
+			else
+			{
+				writeMessage(canvas, "That was a " + answer + " box.");
+				return false;
+			}
+		}
+		canvas.addEventListener('mousedown', function (evt) {
+			if(!isDone) {
+				var mousePos = getMousePos(canvas, evt);
+				getAnswerID(mousePos.x, mousePos.y);
+			}
+		}, false);
+	});
+</script>
+<div>
+	<h2>Click the @Model.Question box</h2><br />
+	<canvas id="colorCanvas" height="250" width="250"></canvas><br />
+	@using (Html.BeginForm("Index", "Color", FormMethod.Get))
+	{
+		<button id="next" hidden type="submit">Next</button>
+		<button id="back" hidden>Back</button>
+	}
+</div>
+<p>
+	@Html.ActionLink("Quit", "Index", "Home")
+</p>
