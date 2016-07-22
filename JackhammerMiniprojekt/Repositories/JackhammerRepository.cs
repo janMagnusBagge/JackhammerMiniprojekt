@@ -32,7 +32,12 @@ namespace JackhammerMiniprojekt.Repositories
 				return null;
 
 			var rand = new Random();
-			return Questions.ElementAtOrDefault(rand.Next(0, Questions.Count - 1));
+			return Questions.ElementAtOrDefault(rand.Next(0, Questions.Count)); //ändrat .Count - 1 till .Count för att se om det kan göra att får annan fråga /Magnus
+		}
+
+		public Question GetQuestionByID(int ID) //Lagt till för att kunna plock ut fråga utifrån ID. /Magnus
+		{
+			return _dbContext.Questions.FirstOrDefault(q => q.ID == ID);
 		}
 	}
 }
