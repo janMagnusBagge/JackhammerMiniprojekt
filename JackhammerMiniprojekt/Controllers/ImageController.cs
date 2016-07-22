@@ -13,5 +13,10 @@ namespace JackhammerMiniprojekt.Controllers
         {
             return View();
         }
+
+		public ActionResult ImageQuestion()
+		{
+			return View();
+		}
     }
 }

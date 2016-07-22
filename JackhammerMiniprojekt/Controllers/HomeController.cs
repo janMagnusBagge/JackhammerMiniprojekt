@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JackhammerMiniprojekt.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,10 @@ namespace JackhammerMiniprojekt.Controllers
 {
 	public class HomeController : Controller
 	{
+		JackhammerRepository _JHRepo = new JackhammerRepository();
 		public ActionResult Index()
 		{
+			var q = _JHRepo.GetQuestion(1);
 			return View();
 		}
 
