@@ -117,7 +117,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ArbitrationController.cs" />
+    <Compile Include="Controllers\PunctuationController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -194,8 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Arbitration\" />
-    <Folder Include="Views\Image\" />
-    <Folder Include="Views\Color\" />
     <Folder Include="Views\Quantity\" />
   </ItemGroup>
   <PropertyGroup>
