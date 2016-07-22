@@ -1,7 +1,9 @@
 ﻿using JackhammerMiniprojekt.DataAccess;
 using JackhammerMiniprojekt.Models;
+using JackhammerMiniprojekt.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 
@@ -33,6 +35,15 @@ namespace JackhammerMiniprojekt.Repositories
 
 			var rand = new Random();
 			return Questions.ElementAtOrDefault(rand.Next(0, Questions.Count - 1));
+		}
+
+		public ColorQuestionViewModel GetColorQuestion()
+		{
+			ColorQuestionViewModel resultQuestion = new ColorQuestionViewModel();
+
+			resultQuestion.SetAnswerAlternatives();
+
+			return resultQuestion;
 		}
 	}
 }
