@@ -178,6 +178,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Color\Index.cshtml" />
+    <Content Include="Views\Image\ImageQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607211401042_initial.resx">
@@ -194,6 +195,7 @@
   <ItemGroup>
     <Folder Include="Views\Arbitration\" />
     <Folder Include="Views\Image\" />
+    <Folder Include="Views\Color\" />
     <Folder Include="Views\Quantity\" />
   </ItemGroup>
   <PropertyGroup>

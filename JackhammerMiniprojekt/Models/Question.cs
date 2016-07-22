@@ -10,8 +10,11 @@ namespace JackhammerMiniprojekt.Models
 	{
 		[Key]
 		public int ID { get; set; }
+		[Display(Name = "Question")]
 		public string QuestionString { get; set; }
+		[Display(Name = "Answer")]
 		public string Answer { get; set; }
+		[Display(Name = "Category")]
 		public int Category { get; set; } //test
 	}
 }
