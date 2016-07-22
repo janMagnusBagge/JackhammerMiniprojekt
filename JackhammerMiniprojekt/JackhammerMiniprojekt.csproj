@@ -136,6 +136,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\JackhammerRepository.cs" />
     <Compile Include="ViewModels\ColorQuestionViewModel.cs" />
+    <Compile Include="ViewModels\WordsQuestionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\JackhammerDB.mdf" />
@@ -179,6 +180,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Color\Index.cshtml" />
     <Content Include="Views\Image\ImageQuestion.cshtml" />
+    <Content Include="Views\Quantity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607211401042_initial.resx">
@@ -194,9 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Arbitration\" />
-    <Folder Include="Views\Image\" />
-    <Folder Include="Views\Color\" />
-    <Folder Include="Views\Quantity\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
