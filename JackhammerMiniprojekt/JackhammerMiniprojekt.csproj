@@ -130,12 +130,17 @@
     <Compile Include="Migrations\201607211401042_initial.Designer.cs">
       <DependentUpon>201607211401042_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608081417568_AddDateAndCategoryToHighscore.cs" />
+    <Compile Include="Migrations\201608081417568_AddDateAndCategoryToHighscore.Designer.cs">
+      <DependentUpon>201608081417568_AddDateAndCategoryToHighscore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Highscore.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\JackhammerRepository.cs" />
     <Compile Include="ViewModels\ColorQuestionViewModel.cs" />
+    <Compile Include="ViewModels\FiveQuestionsViewModel.cs" />
     <Compile Include="ViewModels\WordsQuestionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +191,9 @@
     <EmbeddedResource Include="Migrations\201607211401042_initial.resx">
       <DependentUpon>201607211401042_initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608081417568_AddDateAndCategoryToHighscore.resx">
+      <DependentUpon>201608081417568_AddDateAndCategoryToHighscore.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -196,7 +204,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Arbitration\" />
-    <Folder Include="Views\Quantity\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
