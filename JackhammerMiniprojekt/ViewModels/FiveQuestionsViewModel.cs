@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace JackhammerMiniprojekt.ViewModel
+namespace JackhammerMiniprojekt.ViewModels
 {
 	public class FiveQuestionsViewModel
 	{

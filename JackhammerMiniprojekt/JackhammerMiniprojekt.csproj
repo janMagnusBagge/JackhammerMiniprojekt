@@ -117,6 +117,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FiveQuestionsController.cs" />
     <Compile Include="Controllers\PunctuationController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -186,6 +187,9 @@
     <Content Include="Views\Color\Index.cshtml" />
     <Content Include="Views\Image\ImageQuestion.cshtml" />
     <Content Include="Views\Quantity\Index.cshtml" />
+    <Content Include="Views\FiveQuestions\AddHighscore.cshtml" />
+    <Content Include="Views\FiveQuestions\FiveQuestions.cshtml" />
+    <Content Include="Views\FiveQuestions\ShowHighscore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607211401042_initial.resx">
