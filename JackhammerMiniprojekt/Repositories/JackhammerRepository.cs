@@ -1,5 +1,6 @@
 ﻿using JackhammerMiniprojekt.DataAccess;
 using JackhammerMiniprojekt.Models;
+//using JackhammerMiniprojekt.ViewModels;
 using JackhammerMiniprojekt.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -83,6 +84,89 @@ namespace JackhammerMiniprojekt.Repositories
 				invalidWords += word;
 			}
 			return new WordsQuestionViewModel { Words = missingWords, Answer = invalidWords, Points = points, ShowResult = true };
+		}
+
+		public FiveQuestionsViewModel FiveQuestionGetNext(int category, int questionDone, int points, int lastQuestion, int currentQuestion, string answer, string questionString)
+		{
+			if (category > 0 && questionDone <= 5)
+			{
+				string QuestionAnswer = GetQuestionByID(currentQuestion).Answer;
+				int pointsFromAnswer = CheckAnswer(category, QuestionAnswer, answer);
+
+				var q = GetQuestion(category);
+				while (q.ID == lastQuestion)
+				{
+					q = GetQuestion(category);
+				}
+				FiveQuestionsViewModel model = new FiveQuestionsViewModel();
+				model.Category = category;
+				model.Answer = "";
+				model.QuestionDone = questionDone + 1;
+				model.Points = points + pointsFromAnswer;
+				model.LastQuestion = lastQuestion;
+				model.QuestionString = q.QuestionString;
+				model.LastQuestion = currentQuestion;
+				model.CurrentQuestion = q.ID;
+				return model;
+			}
+			else
+			{
+				FiveQuestionsViewModel model = new FiveQuestionsViewModel();
+				model.Category = category;
+				model.Answer = "";
+				model.QuestionDone = questionDone;
+				model.Points = points;
+				model.LastQuestion = lastQuestion;
+				model.QuestionString = questionString;
+				model.LastQuestion = lastQuestion;
+				model.CurrentQuestion = currentQuestion;
+				return model;
+			}
+		}
+
+		private int CheckAnswer(int Category, string expectedAnswer, string answered)
+		{
+			switch (Category)
+			{
+				case 1:
+					if (expectedAnswer.Trim().ToLower() == answered.Trim().ToLower())
+						return 1;
+					else
+						return 0;
+				default:
+					break;
+			}
+
+			return 0;
+		}
+
+		public int CheckPlaceHighscore(int Category, int Points)
+		{
+			//var highscoresOver = _dbContext.Highscores.Where(v => v.Score > Points).OrderByDescending(v => v.Rank);
+			//int Highest = highscoresOver.First().Rank;
+			//if (Highest)
+			//var Rank = _dbContext.Highscores.Where(v => v.Score <= Points && v.Score);
+			return 0;
+		}
+		public void AddHighscore(string Name, int Category, int Points)
+		{
+			Highscore hig = new Highscore();
+			hig.Date = DateTime.Now;
+			hig.Category = Category;
+			hig.Score = Points;
+			hig.Name = Name;
+
+			_dbContext.Highscores.Add(hig);
+			_dbContext.SaveChanges();
+		}
+
+		public IEnumerable<Highscore> ShowHighscore(int Category)
+		{
+			var highscores = _dbContext.Highscores.Where(high => high.Category == Category)
+												  .OrderByDescending(high => high.Score)
+												  .ThenByDescending(high => high.Date)
+												  .Take(10);
+			return highscores;
 		}
 	}
 }

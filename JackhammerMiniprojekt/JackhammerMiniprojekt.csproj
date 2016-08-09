@@ -117,6 +117,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FiveQuestionsController.cs" />
     <Compile Include="Controllers\PunctuationController.cs" />
     <Compile Include="Controllers\ColorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -130,12 +131,17 @@
     <Compile Include="Migrations\201607211401042_initial.Designer.cs">
       <DependentUpon>201607211401042_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608081417568_AddDateAndCategoryToHighscore.cs" />
+    <Compile Include="Migrations\201608081417568_AddDateAndCategoryToHighscore.Designer.cs">
+      <DependentUpon>201608081417568_AddDateAndCategoryToHighscore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Highscore.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\JackhammerRepository.cs" />
     <Compile Include="ViewModels\ColorQuestionViewModel.cs" />
+    <Compile Include="ViewModels\FiveQuestionsViewModel.cs" />
     <Compile Include="ViewModels\WordsQuestionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +155,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\App.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -182,11 +187,16 @@
     <Content Include="Views\Color\Index.cshtml" />
     <Content Include="Views\Image\ImageQuestion.cshtml" />
     <Content Include="Views\Quantity\Index.cshtml" />
-    <Content Include="Views\Punctuation\Index.cshtml" />
+    <Content Include="Views\FiveQuestions\AddHighscore.cshtml" />
+    <Content Include="Views\FiveQuestions\FiveQuestions.cshtml" />
+    <Content Include="Views\FiveQuestions\ShowHighscore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607211401042_initial.resx">
       <DependentUpon>201607211401042_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608081417568_AddDateAndCategoryToHighscore.resx">
+      <DependentUpon>201608081417568_AddDateAndCategoryToHighscore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
