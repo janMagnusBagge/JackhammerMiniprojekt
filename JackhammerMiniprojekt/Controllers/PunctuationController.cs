@@ -12,12 +12,15 @@ namespace JackhammerMiniprojekt.Controllers
         // GET: Arbitration
         public ActionResult Index()
         {
-            // string p = "Hello, world!";
             // string fp = new string(p.TakeWhile(c => !Char.IsPunctuation(c)).ToArray());
-            string s = "sxrdct?fvzguh,bij.";
+            
+            string originalString = "Hej! Hur mår du?";
+            string modifiedString;
+
+
             var sb = new StringBuilder();
 
-            foreach (char c in s)
+            foreach (char c in originalString)
             {
                 if (!char.IsPunctuation(c))
                 {
@@ -29,7 +32,12 @@ namespace JackhammerMiniprojekt.Controllers
 
                 }
             }
-            s = sb.ToString();
+            modifiedString = sb.ToString();
+
+            @ViewBag.Original = originalString;
+            @ViewBag.Modified = modifiedString;
+
+
             return View();
         }
     }

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    //var originalText = @ViewBag.Original;
+}
+
+<div ng-app="myApp" ng-controller="PunctuationController as PCtrl" class="mainContainer">
+    <h2>Index</h2>
+
+    <div>@ViewBag.Original</div>
+    <div>@ViewBag.Modified</div>
+
+    <input ng-change="checkAnswer()" ng-model="userInput" type="text" placeholder="Write sentence.." />
+
+    User input: {{userInput}}
+    <div>Angular-test: {{1+1}}</div>
+</div>

@@ -149,6 +149,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\App.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -181,6 +182,7 @@
     <Content Include="Views\Color\Index.cshtml" />
     <Content Include="Views\Image\ImageQuestion.cshtml" />
     <Content Include="Views\Quantity\Index.cshtml" />
+    <Content Include="Views\Punctuation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607211401042_initial.resx">
@@ -196,7 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Arbitration\" />
-    <Folder Include="Views\Quantity\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
