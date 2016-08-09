@@ -13,7 +13,7 @@ namespace JackhammerMiniprojekt.Controllers
         // GET: Image
         public ActionResult Index()
         {
-            return View();
+			return RedirectToAction("Index", "Home");
         }
 
 		public ActionResult ImageQuestion()
