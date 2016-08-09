@@ -81,7 +81,7 @@ namespace JackhammerMiniprojekt.Repositories
 			string invalidWords = "";
 			foreach (string word in answers)
 			{
-				invalidWords += word;
+				invalidWords += word + " ";
 			}
 			return new WordsQuestionViewModel { Words = missingWords, Answer = invalidWords, Points = points, ShowResult = true };
 		}
